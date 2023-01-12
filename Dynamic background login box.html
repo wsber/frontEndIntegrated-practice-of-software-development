@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        .bg{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('./assets/1.jpg');
+            background-size: 100vw !important;
+            background-repeat: no-repeat !important;
+            position: absolute;
+            z-index: -1;
+            transition:all 1s  ease-out;
+        }
+
+        .loginbox{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #2b2b2b;
+            box-shadow: 0 0 20px 20px #00000030;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto auto;
+            padding-top: 50px;
+        }
+        .loginbox h1{
+            text-align: center;
+            color: #fff;
+            font-family: "Arial";
+        }
+        .loginbox p {
+            font-size: 18px;
+            display: block;
+            width: 380px;
+            margin: 20px auto;
+        }
+
+        .loginbox i{
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            padding-top: 5px;
+        }
+        .icon{
+            width: 25px;
+        }
+        .loginbox input{
+            width: 335px;
+            height: 18px;
+            font-size: 18px;
+            margin-left: 8px;
+            background-color: #ffffff00;
+            border: none;
+            border-bottom: 2px solid #000;
+            color:#D7DDE8;
+        }
+        .loginbox input:focus{
+            outline: none;
+        }
+        .loginButton{
+            width: 200px;
+            height: 40px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .loginButton:hover{
+            box-shadow: 0 0  10px 10px #00000020;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            let bg = document.getElementsByClassName('bg')[0]
+            // 记录当前图片索引
+            let index = 1
+            setInterval(() => {
+                bg.style.opacity = 0.8
+                setTimeout(() => {
+                    bg.style.opacity = 1
+                    index = Math.max((index+1)%7,1)
+                    bg.style.background = `url('./assets/${index}.jpg')`
+                }, 1000);
+            }, 4000);
+        }
+    </script>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="loginbox">
+        <h1>Login</h1>
+        <p><i><img src="./assets/账号.png" class="icon"></i><input type="text"></p>
+        <p><i><img src="./assets/密码.png" class="icon"></i><input type="password"></p>
+        <div class="loginButton">登录</div>
+    </div>
+</body>
+</html>
