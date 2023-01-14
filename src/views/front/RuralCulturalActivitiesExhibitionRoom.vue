@@ -47,31 +47,31 @@
 
         <div style="margin-top: 10px">
             <el-drawer
-                    title="书籍详细信息"
+                    title="娱乐活动详细信息"
                     :visible.sync="drawer"
                     :direction="direction"
                     :before-close="handleClose"
                     :wrapper-closable="true">
                 <div style="margin-left: 20px">
                     <div style="display: flex">
-                        <img :src="detailBookInformation.cover"
+                        <img :src="detailActivityInformation.cover"
                              class="image"
                              style="width: 150px; height: 202px;margin-top: 5px"
                         />
                         <div style="margin-left: 20px;">
-                            <span style="font-weight: bold;font-size:x-large">{{detailBookInformation.bookname}}</span>
+                            <span style="font-weight: bold;font-size:x-large">{{detailActivityInformation.activityName}}</span>
                             <br/>
-                            <div style="margin-top: 80px;font-weight: lighter">作者：{{detailBookInformation.authorName}}</div>
+                            <div style="margin-top: 80px;font-weight: lighter">表演团队：{{detailActivityInformation. performanceTeam}}</div>
                         </div>
                     </div>
                 </div>
                 <div style="margin-left: 130px; margin-top: 50px;">
-                    <el-button type = "success" class="ml-5" @click="read(detailBookInformation)">阅读</el-button>
-                    <el-button type = "primary" @click="downloadEbook(detailBookInformation)">下载</el-button>
-                    <el-button type = "primary"@click="collectEbook(detailBookInformation)">收藏</el-button>
+                    <el-button type = "success" class="ml-5" @click="read(detailActivityInformation)">阅读</el-button>
+                    <el-button type = "primary" @click="downloadEbook(detailActivityInformation)">下载</el-button>
+                    <el-button type = "primary"@click="collectEbook(detailActivityInformation)">收藏</el-button>
                 </div>
                 <div style="margin-left: 230px; margin-top: 50px;font-weight: bold;font-size: large">简介</div>
-                <div style="margin-top: 10px;font-weight: lighter">{{detailBookInformation.synopsis}}</div>
+                <div style="margin-top: 10px;font-weight: lighter">{{detailActivityInformation.mydesc}}</div>
             </el-drawer>
         </div>
 
@@ -79,10 +79,10 @@
 
         <div class="box" id="app" >
             <ul>
-                <li :class="item.class"  v-for="item in licontainer" @mouseover="changeActive($event)" @mouseleave="removeActive($event)">
+                <li :class="item.class"  v-for="item in activityContainer" @mouseover="changeActive($event)" @mouseleave="removeActive($event)">
                     <el-button type="text" @click="lookUpDetailedInformation(item)" style="font-size: 15px; color: #ef2d84">查看详细信息</el-button>
                     <img :src="item.cover" alt="img">
-                    <h3>{{item.bookname}}</h3>
+                    <h3>{{item.activityName}}</h3>
                 </li>
                 <div style="clear: both"></div>
             </ul>
@@ -121,7 +121,7 @@
                 //抽屉特效
                 drawer: false,
                 direction: 'ltr',
-                detailBookInformation:{},
+                detailActivityInformation:{},
                 bookname: "",
                 authorName:"",
                 memberName:"",
@@ -137,6 +137,8 @@
                      'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
                  ],*/
                 licontainer:[],
+                activityContainer:[],
+                activityInfor:[],
                 bookInfor:[],
                 bookAuthority: false,
                 userid:{},
@@ -150,9 +152,9 @@
         methods:{
 
             lookUpDetailedInformation(item){
-                this.detailBookInformation = item
+                this.detailActivityInformation = item
                 this.drawer = true
-                console.log(this.detailBookInformation)
+                console.log(this.detailActivityInformation)
             },
             handleClose(done) {
                 this.$confirm('确认关闭？')
@@ -411,22 +413,30 @@
 
 
             initData(){
-                // this.request.get("/bookinfor").then(res =>{
-                //     // console.log(res)
-                //     this.licontainer = undefined;
-                //     this.licontainer = new Array();
-                //     this.bookInfor = res
-                //     console.log("这里是bookInfor")
-                //     console.log(this.bookInfor)
-                //     for(var i = 0 ; i < this.bookInfor.length ; i++){
-                //         let tmp = this.bookInfor[i];
-                //         tmp.class ="box_ul_li";
-                //         this.licontainer.push(tmp);
-                //     }
-                // })
-                let id = 1;
+                this.request.get("/bookinfor").then(res =>{
+                    // console.log(res)
+                    this.licontainer = undefined;
+                    this.licontainer = new Array();
+                    this.bookInfor = res
+                    console.log("这里是bookInfor")
+                    console.log(this.bookInfor)
+                    for(var i = 0 ; i < this.bookInfor.length ; i++){
+                        let tmp = this.bookInfor[i];
+                        tmp.class ="box_ul_li";
+                        this.licontainer.push(tmp);
+                    }
+                })
+
                 this.request.get("/ruralrecreation/detail").then(res=>{
-                    console.log("这里是娱乐数据",res);
+                    this.activityContainer = undefined;
+                    this.activityContainer = new Array() ;
+                    this.activityInfor = res;
+                    for(var i = 0 ; i < this.activityInfor.length ; i++){
+                        let tmp = this.activityInfor[i];
+                        tmp.class ="box_ul_li";
+                        this.activityContainer.push(tmp);
+                    }
+                    console.log("这里是娱乐数据",this.activityContainer);
                 })
 
             },
