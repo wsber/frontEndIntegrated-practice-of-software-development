@@ -7,7 +7,7 @@
                 <div style="width: 60px">
                     <img src="../../assets/logo2.png" alt="" style=" width: 70px; position: relative; top: 5px; right: 0">
                 </div>
-                <div style="flex: 1; margin-left: 20px"> 欢迎来到樱花树</div>
+                <div style="flex: 1; margin-left: 20px ; "> 欢迎来到文化振兴平台</div>
             </div>
             <div style="flex: 1">
                 <el-menu
@@ -19,6 +19,10 @@
                         background-color="#fff"
                         text-color="#545c64"
                         active-text-color="#ffd04b">
+                    <el-menu-item index="RuralCulturalActivitiesExhibitionRoom">
+                        <i class="el-icon-cloudy    "></i>
+                        <span slot="title">乡村文化活动展览室</span>
+                    </el-menu-item>
                     <el-menu-item index="PersonalReadingHouse">
                         <i class="el-icon-s-home    "></i>
                         <span slot="title">个人阅览室</span>
