@@ -8,6 +8,7 @@
 <script>
     export default {
         name: "NotFound"
+        id: 1
     }
 </script>
 
