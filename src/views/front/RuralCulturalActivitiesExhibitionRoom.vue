@@ -391,7 +391,7 @@
 
                             this.request.post("/bookinfor/update" , item).then(re =>{
                                 if(re){
-                                    console.log("点击量更新成功")
+                                    console.log("点击量更新成功啦")
                                 }
 
                             })
