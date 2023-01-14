@@ -219,6 +219,7 @@
                 headerBg: 'headerBg',
                 editdialogFormVisible: false,
                 infodialogFormVisible: false,
+                systemTime:new time,
             };
         },
         created() {
