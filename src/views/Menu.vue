@@ -93,7 +93,6 @@
 
 <script>
 import {serverIp} from "../../public/config";
-
 export default {
   name: "Menu",
   data() {

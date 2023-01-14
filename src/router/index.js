@@ -41,6 +41,13 @@ const routes = [
 
       },
       {
+
+        path: 'RuralCulturalActivitiesExhibitionRoom',
+        name: 'RuralCulturalActivitiesExhibitionRoom',
+        component:() => import("../views/front/RuralCulturalActivitiesExhibitionRoom.vue")
+
+      },
+      {
         path: 'bookSale',
         name: 'BookSale',
         component:() => import("../views/front/BookSale.vue")
