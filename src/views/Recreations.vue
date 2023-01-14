@@ -189,6 +189,7 @@
          </el-dialog>
       </div>
    </div>
+
 </template>
 
 <script>
@@ -219,7 +220,7 @@
                 headerBg: 'headerBg',
                 editdialogFormVisible: false,
                 infodialogFormVisible: false,
-                systemTime:new time,
+
             };
         },
         created() {
