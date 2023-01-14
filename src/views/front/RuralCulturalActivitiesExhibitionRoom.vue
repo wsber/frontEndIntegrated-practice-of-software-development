@@ -30,48 +30,50 @@
 
 
         <div style="margin-top: 20px; margin-left: 310px; padding:  10px 0">
-            <el-input style=" width:200px" placeholder="请输入书名" suffix-icon="el-icon-reading" v-model = "bookname"></el-input>
+            <el-input style=" width:200px" placeholder="请输入活动名称" suffix-icon="el-icon-reading" v-model = "activityName"></el-input>
             <!--            <el-input style=" width:200px" placeholder="请输入会员名称" suffix-icon="el-icon-loading" class = "ml-5" v-model = "memberName"></el-input>-->
-            <el-select v-model="memberName" placeholder="请选择会员等级">
-                <el-option label="普通会员" value="普通会员"></el-option>
-                <el-option label="白银会员" value="白银会员"></el-option>
-                <el-option label="黄金会员" value="黄金会员"></el-option>
-                <el-option label="铂金会员" value="铂金会员"></el-option>
-                <el-option label="钻石会员" value="钻石会员"></el-option>
-                <el-option label="超级大会员" value="超级大会员"></el-option>
+            <el-select v-model="activityType" placeholder="请选择活动类型" style="margin-left: 5px">
+                <el-option label="文化演出活动" value="文化演出活动" ></el-option>
+                <el-option label="公益电影放映" value="公益电影放映" ></el-option>
+                <el-option label="送戏下乡" value="送戏下乡"></el-option>
             </el-select>
-            <el-input style=" width:200px" placeholder="请输入作者名" suffix-icon="el-icon-user" class = "ml-5" v-model = "authorName"></el-input>
-            <el-button class="ml-5" type="primary" @click="likeSearchBooks">搜索</el-button>
+            <el-input style=" width:200px ; margin-left: 5px" placeholder="请输入表演团队名称" suffix-icon="el-icon-user" class = "ml-5" v-model = "performanceTeam"></el-input>
+            <el-button class="ml-5" type="primary" @click="likeSearchActivities">搜索</el-button>
             <el-button class="ml-5" type="warning" @click="reset">重置</el-button>
         </div>
 
         <div style="margin-top: 10px">
             <el-drawer
-                    title="书籍详细信息"
+                    title="娱乐活动详细信息"
                     :visible.sync="drawer"
                     :direction="direction"
                     :before-close="handleClose"
-                    :wrapper-closable="true">
+                    :wrapper-closable="true" :size="drawerSize">
                 <div style="margin-left: 20px">
                     <div style="display: flex">
-                        <img :src="detailBookInformation.cover"
+                        <img :src="detailActivityInformation.cover"
                              class="image"
-                             style="width: 150px; height: 202px;margin-top: 5px"
+                             style="width: 270px; height: 272px;margin-top: 5px"
                         />
                         <div style="margin-left: 20px;">
-                            <span style="font-weight: bold;font-size:x-large">{{detailBookInformation.bookname}}</span>
-                            <br/>
-                            <div style="margin-top: 80px;font-weight: lighter">作者：{{detailBookInformation.authorName}}</div>
+                            <span style="font-weight: bold;font-size:x-large">名称: {{detailActivityInformation.activityName}}</span>
+                            <div style="margin-top: 20px;font-weight: lighter">活动类型：{{detailActivityInformation. type}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">观众数量：{{detailActivityInformation. audienceNumber}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">表演团队：{{detailActivityInformation. performanceTeam}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">活动地址：{{detailActivityInformation.province + detailActivityInformation.region + detailActivityInformation.town + detailActivityInformation.village}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">活动开始时间：{{detailActivityInformation. activityStarttime}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">活动结束时间：{{detailActivityInformation. activityEndtime}}</div>
+
                         </div>
                     </div>
                 </div>
-                <div style="margin-left: 130px; margin-top: 50px;">
-                    <el-button type = "success" class="ml-5" @click="read(detailBookInformation)">阅读</el-button>
-                    <el-button type = "primary" @click="downloadEbook(detailBookInformation)">下载</el-button>
-                    <el-button type = "primary"@click="collectEbook(detailBookInformation)">收藏</el-button>
+                <div style=" margin-top: 50px; text-align: center">
+                    <el-button type = "success" class="ml-5" @click="read(detailActivityInformation)">观看视频</el-button>
+                    <el-button type = "primary" @click="downloadEbook(detailActivityInformation)">下载视频</el-button>
+                    <el-button type = "primary" @click="collectEbook(detailActivityInformation)">收藏活动</el-button>
                 </div>
-                <div style="margin-left: 230px; margin-top: 50px;font-weight: bold;font-size: large">简介</div>
-                <div style="margin-top: 10px;font-weight: lighter">{{detailBookInformation.synopsis}}</div>
+                <div style=" margin-top: 50px;font-weight: bold;font-size: large ;text-align: center">简介</div>
+                <div style="margin-left: 20px ;margin-top: 10px; margin-right:20px;font-weight: lighter">{{detailActivityInformation.mydesc}}</div>
             </el-drawer>
         </div>
 
@@ -79,10 +81,10 @@
 
         <div class="box" id="app" >
             <ul>
-                <li :class="item.class"  v-for="item in licontainer" @mouseover="changeActive($event)" @mouseleave="removeActive($event)">
+                <li :class="item.class"  v-for="item in activityContainer" @mouseover="changeActive($event)" @mouseleave="removeActive($event)">
                     <el-button type="text" @click="lookUpDetailedInformation(item)" style="font-size: 15px; color: #ef2d84">查看详细信息</el-button>
-                    <img :src="item.cover" alt="img">
-                    <h3>{{item.bookname}}</h3>
+                    <img :src="item.cover" alt="img" style="width: 170px; height: 202px;margin-top: 5px">
+                    <h3>{{item.activityName}}</h3>
                 </li>
                 <div style="clear: both"></div>
             </ul>
@@ -120,8 +122,14 @@
                 },
                 //抽屉特效
                 drawer: false,
+                drawerSize:'37%',
                 direction: 'ltr',
-                detailBookInformation:{},
+                detailActivityInformation:{},
+                activityType:'',
+                activityName:'',
+                performanceTeam:'',
+
+
                 bookname: "",
                 authorName:"",
                 memberName:"",
@@ -137,6 +145,8 @@
                      'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
                  ],*/
                 licontainer:[],
+                activityContainer:[],
+                activityInfor:[],
                 bookInfor:[],
                 bookAuthority: false,
                 userid:{},
@@ -150,9 +160,9 @@
         methods:{
 
             lookUpDetailedInformation(item){
-                this.detailBookInformation = item
+                this.detailActivityInformation = item
                 this.drawer = true
-                console.log(this.detailBookInformation)
+                console.log(this.detailActivityInformation)
             },
             handleClose(done) {
                 this.$confirm('确认关闭？')
@@ -162,10 +172,10 @@
                     .catch(_ => {});
             },
             reset(){
-                this.bookname ="",
-                    this.memberName = "",
-                    this.authorName ="",
-                    this.initData()
+                this.activityName ="",
+                this.activityType = "",
+                this.performanceTeam ="",
+                this.initData()
             },
             searchBooks(){
                 this.licontainer = undefined;
@@ -322,15 +332,14 @@
 
             },
 
-            likeSearchBooks(){
-
-                this.licontainer = undefined;
-                this.licontainer = new Array();
-                this.request.get("/bookinfor/likeSearchBooks" , {
+            likeSearchActivities(){
+                this.activityContainer = undefined;
+                this.activityContainer = new Array();
+                this.request.get("/ruralrecreation/likeSearchActivities" , {
                     params:{
-                        bookname: this.bookname,
-                        memberName: this.memberName,
-                        authorName: this.authorName,
+                        activityName: this.activityName,
+                        activityType: this.activityType,
+                        performanceTeam: this.performanceTeam,
                     }
                 }).then(res=>{
                     console.log("这里返回的res")
@@ -345,10 +354,10 @@
                     for(var i = 0 ; i <  this.bufferTheme.length ; i++){
                         let tmp = this.bufferTheme[i];
                         tmp.class ="box_ul_li";
-                        this.licontainer.push(tmp);
+                        this.activityContainer.push(tmp);
                     }
-                    console.log(this.licontainer)
-                    console.log("这里模糊查询的licontainer")
+                    console.log(this.activityContainer)
+                    console.log("这里模糊查询的accontainer")
                 })
             },
             getLightNovel(){
@@ -411,22 +420,30 @@
 
 
             initData(){
-                // this.request.get("/bookinfor").then(res =>{
-                //     // console.log(res)
-                //     this.licontainer = undefined;
-                //     this.licontainer = new Array();
-                //     this.bookInfor = res
-                //     console.log("这里是bookInfor")
-                //     console.log(this.bookInfor)
-                //     for(var i = 0 ; i < this.bookInfor.length ; i++){
-                //         let tmp = this.bookInfor[i];
-                //         tmp.class ="box_ul_li";
-                //         this.licontainer.push(tmp);
-                //     }
-                // })
-                let id = 1;
+                this.request.get("/bookinfor").then(res =>{
+                    // console.log(res)
+                    this.licontainer = undefined;
+                    this.licontainer = new Array();
+                    this.bookInfor = res
+                    console.log("这里是bookInfor")
+                    console.log(this.bookInfor)
+                    for(var i = 0 ; i < this.bookInfor.length ; i++){
+                        let tmp = this.bookInfor[i];
+                        tmp.class ="box_ul_li";
+                        this.licontainer.push(tmp);
+                    }
+                })
+
                 this.request.get("/ruralrecreation/detail").then(res=>{
-                    console.log("这里是娱乐数据",res);
+                    this.activityContainer = undefined;
+                    this.activityContainer = new Array() ;
+                    this.activityInfor = res;
+                    for(var i = 0 ; i < this.activityInfor.length ; i++){
+                        let tmp = this.activityInfor[i];
+                        tmp.class ="box_ul_li";
+                        this.activityContainer.push(tmp);
+                    }
+                    console.log("这里是娱乐数据",this.activityContainer);
                 })
 
             },
