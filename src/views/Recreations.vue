@@ -43,7 +43,7 @@
             <el-table-column type="selection" align="center" width="40"></el-table-column>
             <el-table-column prop="cover" align="center" label="活动照片" width="100">
                <template #default="scope">
-                  <img :src="scope.row.cover" style="width: 50px; height: 80px">
+                  <img :src="scope.row.cover" style="width: 70px; height: 100px">
                </template>
             </el-table-column>
             <el-table-column prop="activityName" align="center" label="活动名称" width="150"></el-table-column>
@@ -143,12 +143,22 @@
                <el-form-item label="活动照片" >
                   <el-upload
                           class="avatar-uploader"
-                          :action="getUrl"
+                          action="http://localhost:9099/file/upload"
                           :show-file-list="false"
                           :on-success="handleAvatarSuccess"
                           :before-upload="beforeAvatarUpload">
                      <img v-if="form.cover" :src="form.cover" class="avatar">
                      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                  </el-upload>
+               </el-form-item>
+               <el-form-item label="上传活动视频" >
+                  <el-upload
+                          class="upload-demo"
+                          :action="getUrl"
+                          :show-file-list="false"
+                          :on-success="handleAvatarSuccess"
+                          :before-upload="beforeVideoUpload">
+                     <el-button size="small" type="primary">点击上传</el-button>
                   </el-upload>
                </el-form-item>
                <el-form-item label="活动名称" >
@@ -189,7 +199,6 @@
          </el-dialog>
       </div>
    </div>
-
 </template>
 
 <script>
@@ -205,8 +214,8 @@
                 pageSize:5,
                 id:"",
                 activityName:"",
-                activityStartTime: new Date(),
-                activityEndTime: new Date(),
+                activityStarttime: new Date(),
+                activityEndtime: new Date(),
                 transStartTime:"",
                 transEndTime:"",
                 audienceNumber:"",
@@ -220,7 +229,7 @@
                 headerBg: 'headerBg',
                 editdialogFormVisible: false,
                 infodialogFormVisible: false,
-
+                videoFile:""
             };
         },
         created() {
@@ -239,12 +248,12 @@
                     }
                 }).then(res => {console.log(res)
                     this.tableData=res.records
+                    this.total=res.total
                     console.log(this.tableData)
                     for(var i = 0 ;i <this.tableData.length ; i++){
-                        this.tableData[i].transStartTime = this.tableData[i].activityStartTime[0] + "-" +this.tableData[i].activityStartTime[1]+ "-" + this.tableData[i].activityStartTime[2] +" " + this.tableData[i].activityStartTime[3] +":" +this.tableData[i].activityStartTime[4] +":"+this.tableData[i].activityStartTime[5];
-                        this.tableData[i].transEndTime = this.tableData[i].activityEndTime[0] + "-" +this.tableData[i].activityEndTime[1]+ "-" + this.tableData[i].activityEndTime[2] +" " + this.tableData[i].activityEndTime[3] +":" +this.tableData[i].activityEndTime[4] +":"+this.tableData[i].activityEndTime[5];
+                        this.tableData[i].transStartTime = this.tableData[i].activityStarttime[0] + "-" +this.tableData[i].activityStarttime[1]+ "-" + this.tableData[i].activityStarttime[2] ;
+                        this.tableData[i].transEndTime = this.tableData[i].activityEndtime[1] + "-" +this.tableData[i].activityEndtime[1]+ "-" + this.tableData[i].activityEndtime[2] ;
                     }
-                    this.total=res.records.total
                 })
             },
             reset(){
@@ -356,9 +365,10 @@
                 })
             },
             getUrl(){
-                this.request.post("/ruralrecreation/upload").then(res =>{
+                this.request.post("/file/upload").then(res =>{
                     if(res){
                         this.$message.success("添加成功")
+                        this.form.cover=res.toString()
                         this.infodialogFormVisible=false
                         this.load()
                     }else {
@@ -368,24 +378,34 @@
             },
             handleAvatarSuccess(res, file) {
                 this.cover = URL.createObjectURL(file.raw);
+                this.$message.success("导入成功")
             },
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg';
-                const isLt2M = file.size / 1024 / 1024 < 2;
+                const isLt2M = file.size / 1024 / 1024 < 5;
 
                 if (!isJPG) {
                     this.$message.error('上传头像图片只能是 JPG 格式!');
                 }
                 if (!isLt2M) {
-                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                    this.$message.error('上传头像图片大小不能超过 5MB!');
                 }
                 return isJPG && isLt2M;
             },
+           beforeVideoUpload(file) {
+              const isvideo = file.type === 'mp4';
+              if (!isvideo) {
+                 this.$message.error('上传头像图片只能是 .mp4 格式!');
+              }
+              return isvideo ;
+           },
             handleAdd(){
                 this.infodialogFormVisible=true
                 this.form={}
             },
             handleAddActivity(){
+               // this.form.activityStarttime=this.times[0]
+               // this.form.activityStarttime=this.times[1]
                 this.request.post("/ruralrecreation",this.form).then(res =>{
                     if(res){
                         this.$message.success("添加成功")
