@@ -31,20 +31,6 @@
         </div>
 
     </div>
-<!--        <el-dropdown style="width: 70px ; cursor: pointer">-->
-<!--            <span>王小虎</span><i class="el-icon-arrow-down" style="margin-left: 5px"></i>-->
-<!--            <el-dropdown-menu slot="dropdown">-->
-<!--                <el-dropdown-item>查看个人信息</el-dropdown-item>-->
-<!--                <el-dropdown-item @click.native="backToFront">回到前台</el-dropdown-item>-->
-
-<!--                <el-dropdown-item>-->
-<!--                    <span  style="text-decoration: none" @click="logout">退出</span>-->
-<!--                </el-dropdown-item>-->
-<!--            </el-dropdown-menu>-->
-<!--        </el-dropdown>-->
-        
-<!--    </div>-->
-
 
 
 </template>
@@ -98,7 +84,7 @@
 
             backToFront(){
 
-                this.$router.push('/front/bookSale')
+                this.$router.push('/front/RuralCulturalActivitiesExhibitionRoom')
 
             },
             logout(){

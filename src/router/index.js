@@ -6,28 +6,6 @@ import Home from '../views/bookBar.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'bookBar',
-  //   component: () =>import('../views/bookBar'),
-  //   redirect:"/login",
-  //   children:[
-  //     {path: 'home', name: '主页', component: () =>import('../views/Home.vue')} ,
-  //     {path: 'ManageEbook', name: '图书管理/电子图书管理', component: () =>import('../views/ManageEbook')},
-  //     {path: 'ManageBook', name: '图书管理/实体图书管理', component: () =>import('../views/ManageBook')},
-  //     {path: 'ManageEmployee', name: '内务管理/员工管理', component: () =>import('../views/ManageEmployee')},
-  //     {path: 'ManageFinance', name: '内务管理/财务管理', component: () =>import('../views/ManageFinance')},
-  //     {path: 'AssignSeats', name: '座位分配', component: () =>import('../views/AssignSeats')},
-  //     {path: 'ManageMember', name: '会员管理', component: () =>import('../views/ManageMember')},
-  //     {path: 'File', name: '文件管理', component: () =>import('../views/File')},
-  //     {path: 'storeorder', name: '订单管理/进货订单管理', component: () =>import('../views/StoreOrder')} ,
-  //     {path: 'userorder', name: '订单管理/用户订单管理', component: () =>import('../views/UserOrder')},
-  //     {path: '/person', name: '个人信息界面', component: () => import('../views/Person.vue'),},
-  //     {path: '/Role', name: '角色管理', component: () => import('../views/Role.vue'),},
-  //     {path: '/menu', name: '菜单管理', component: () => import('../views/Menu.vue'),},
-  //
-  //   ]
-  // },
   {
     path: '/front',
     name: 'Front',

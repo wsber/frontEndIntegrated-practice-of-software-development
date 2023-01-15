@@ -86,6 +86,8 @@
             </template>
         </el-dialog>
         <el-dialog :visible.sync="dialogVisible2" title="订单" width = "30%">
+
+
             <el-form :model="orderdialog" label-width="120px">
                 <el-form-item label = "订单号">
                     <span  style = "width:90%">{{orderdialog.ordernumber}}</span>
@@ -187,21 +189,7 @@
                     'http://localhost:9099/file/73e921b2a67849c8ab712978e28ec7bd.png',
                     'http://localhost:9099/file/30218b32cb5140dfaa3b89fa21badb05.png',
                     'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
-                    'http://localhost:9099/file/3ece20842db142dabf5afafeef8916a5.jpg',
-                    'http://localhost:9099/file/6c02f093904047278c2d0da6e448897a.png',
-                    'http://localhost:9099/file/0ddae165f92545799bb9687def1bc7f6.png',
-                    'http://localhost:9099/file/d2ae0ceb1acb474ab9cd9e2dfae33279.png',
-                    'http://localhost:9099/file/5286bfe739964e948b88179e08808c71.png',
-                    'http://localhost:9099/file/227f8fc4d7e846628c0e735ebb209c0b.png',
-                    'http://localhost:9099/file/7810d5860bc146d7829832b4bfc4cff3.png',
-                    'http://localhost:9099/file/474cac4ba4b04e36a47788c7675e47de.png',
-                    'http://localhost:9099/file/b1a001828a4345e791448ea60ab0f0a6.png',
-                    ' http://localhost:9099/file/502949a2ef6e4da88395223fdf7ed0f9.png',
                     ' http://localhost:9099/file/e0ce5087dd15448ea5621c9c4d36be96.jpg',
-                    ' http://localhost:9099/file/759f5510cfaf4fd1954fd84c4d166845.jpg',
-
-
-
                 ],
                 licontainer:[],
                 licontainer2:[],
