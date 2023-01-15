@@ -1,32 +1,13 @@
 
 <template>
     <div class = "sale-background" >
-        <div style="display: flex; margin-left: 310px; margin-top: 10px">
-            <el-tag type="success" style="height: 35px; width:110px; font-size:20px; margin-right: 30px; margin-bottom: 5px">地区:</el-tag>
-            <el-checkbox-group  v-model="checkboxGroup1">
-                <el-checkbox-button  v-for=" area in areas" :label="area" >{{area}}</el-checkbox-button>
-            </el-checkbox-group>
-        </div>
-
-        <div >
-            <div style="display: flex; margin-left: 310px; margin-top: 10px">
-                <el-tag  style="height: 35px; width:110px; font-size:20px; margin-right: 30px; margin-bottom: 5px">轻小说:</el-tag>
-                <el-checkbox-group v-model=" checkboxGroup2" @change="getLightNovel">
-                    <el-checkbox-button  v-for="lightNovel  in lightNovels " :label="lightNovel" >{{lightNovel}}</el-checkbox-button>
-                </el-checkbox-group>
-            </div>
-
-            <div style="display: flex; margin-left: 310px; margin-top: 10px">
-                <el-tag type="info" style="height: 35px; width:110px; font-size:20px; margin-right: 30px; margin-bottom: 5px">漫画:</el-tag>
-                <el-checkbox-group v-model="checkboxGroup3">
-                    <el-checkbox-button v-for="comic in comics" :label="comic" >{{comic}}</el-checkbox-button>
-                    <el-button style="margin-left: 50px;"
-                               icon="el-icon-search" type = "success"  @click="searchBooks()">搜 索</el-button>
-                </el-checkbox-group>
-            </div>
 
 
-        </div>
+        <el-carousel :interval="2000" type="card" height="450px" style="background-size: cover">
+            <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
+                <img :src="item1" alt="img" style="width: 100%">
+            </el-carousel-item>
+        </el-carousel>
 
 
         <div style="margin-top: 20px; margin-left: 310px; padding:  10px 0">
@@ -68,8 +49,8 @@
                     </div>
                 </div>
                 <div style=" margin-top: 50px; text-align: center">
-                    <el-button type = "success" class="ml-5" @click="read(detailActivityInformation)">观看视频</el-button>
-                    <el-button type = "primary" @click="downloadEbook(detailActivityInformation)">下载视频</el-button>
+                    <el-button type = "success" class="ml-5" @click="preview(detailActivityInformation.videoFile)">观看视频</el-button>
+                    <el-button type = "primary" @click="downloadVideo(detailActivityInformation)">下载视频</el-button>
                     <el-button type = "primary" @click="collectEbook(detailActivityInformation)">收藏活动</el-button>
                 </div>
                 <div style=" margin-top: 50px;font-weight: bold;font-size: large ;text-align: center">简介</div>
@@ -96,7 +77,7 @@
                 <div style=" flex: 6;display: flex">
                     <h1 style="color: #d3dce6;margin-left: 30px;padding-top: 8px">乡村文化振兴</h1>
                 </div>
-                <div style="margin-left: 100px;padding-top: 50px;flex: 2">
+                <div style="margin-left: 1px;padding-top: 50px;flex: 2">
                     <h3 style="color: #d3dce6;margin-left: 15px">团队：三人帮</h3>
                 </div>
             </div>
@@ -111,10 +92,12 @@
         name: "RuralCulturalActivitiesExhibitionRoom",
         data(){
             return {
-                /* <el-radio label="ltr">从左往右开</el-radio>
-                 <el-radio label="rtl">从右往左开</el-radio>
-                 <el-radio label="ttb">从上往下开</el-radio>
-                 <el-radio label="btt">从下往上开</el-radio>*/
+                imgs:[
+                    'http://localhost:9099/file/73e921b2a67849c8ab712978e28ec7bd.png',
+                    'http://localhost:9099/file/30218b32cb5140dfaa3b89fa21badb05.png',
+                    'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
+                    ' http://localhost:9099/file/e0ce5087dd15448ea5621c9c4d36be96.jpg',
+                ],
                 bgImg: {
                     backgroundImage: "url('http://localhost:9099/file/fc2454d9adbd4e158d79f03b62de2762.jpg')",
                     backgroundRepeat: "no-repeat",
@@ -156,6 +139,7 @@
         },
         created() {
             this.initData()
+            this.initImages()
         },
         methods:{
 
@@ -177,161 +161,6 @@
                 this.performanceTeam ="",
                 this.initData()
             },
-            searchBooks(){
-                this.licontainer = undefined;
-                this.licontainer = new Array();
-                // console.log(this. checkboxGroup1)
-                /*this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup1).then(res=>{
-                    // console.log(res)
-                    this.bufferTheme = res;
-                    // console.log(this.bufferTheme)
-                    for(var i = 0 ; i <  this.bufferTheme.length ; i++){
-                        let tmp = this.bufferTheme[i];
-                        tmp.class ="box_ul_li";
-                        this.licontainer.push(tmp);
-                    }
-                })*/
-                // console.log(this. checkboxGroup2)
-                if(this.checkboxGroup2.length !== 0){
-                    this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup2).then(res=>{
-                        // console.log(res)
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        // console.log(this.bufferTheme)
-                        for(var i = 0 ; i <  this.bufferTheme.length ; i++){
-                            let tmp = this.bufferTheme[i];
-                            tmp.class ="box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-
-                if(this.checkboxGroup3.length !== 0){
-                    this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup3).then(res=>{
-                        // console.log(res)
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        // console.log(this.bufferTheme)
-                        for(var i = 0 ; i <  this.bufferTheme.length ; i++){
-                            let tmp = this.bufferTheme[i];
-                            tmp.class ="box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-                /*if(this.checkboxGroup3.length !== 0) {
-                    this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup3 +'/' + this.checkboxGroup1).then(res => {
-                        // console.log(res)
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        console.log(res)
-                        console.log("这里是res")
-                        console.log(res)
-                        // console.log(this.bufferTheme.length)
-                        for (var i = 0; i < this.bufferTheme.length; i++) {
-                            let tmp = res[i];
-                            tmp.class = "box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-
-                        console.log("3我到这里了，这里在筛选")
-                        console.log(this.licontainer )
-
-
-                        // console.log(this.licontainer[0])
-                        // console.log(this.licontainer[1])
-                        // console.log(this.licontainer[2])
-                        // console.log(this.licontainer[3])
-                        // console.log(this.checkboxGroup1.length )
-                        // console.log(this.checkboxGroup1 )
-                        //         if(this.checkboxGroup1.length !==0){
-                        //             for(var i = 0 ; i < this.licontainer.length ; i++){
-                        //                 var countMarry = 0 ;
-                        //                 for(var j = 0 ; j < this.checkboxGroup1.length ; j++){
-                        //
-                        //                     if(this.licontainer[i].area === this.checkboxGroup1[j]){
-                        //                         countMarry ++ ;
-                        //                     }
-                        //                 }
-                        //                 if(countMarry === 0 ){
-                        //                     this.licontainer.splice(i,1)
-                        //                 }
-                        //             }
-                        //         }
-
-                    })
-                }*/
-
-
-
-                if(this.checkboxGroup2.length ===0 && this.checkboxGroup3.length === 0){
-                    this.request.get("/bookinfor/searchBookArea/" +this.checkboxGroup1).then(res =>{
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        console.log(this.bufferTheme)
-                        for (var i = 0; i < this.bufferTheme.length; i++) {
-                            let tmp = this.bufferTheme[i];
-                            tmp.class = "box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-
-
-                /* else {
-
-                     console.log("我到这里了，这里在筛选")
-                     console.log(this.licontainer.length )
-                     console.log(this.checkboxGroup1.length  )
-
-                     for(var i = 0 ; i < this.licontainer.length ; i++){
-
-                         var countMarry = 0 ;
-                         for(var j = 0 ; j < this.checkboxGroup1.length ; j++){
-
-                             if(this.licontainer[i].area === this.checkboxGroup1[j]){
-                                 countMarry ++ ;
-                             }
-                         }
-                         if(countMarry === 0 ){
-                             this.licontainer.splice(i,1)
-                         }
-
-                     }
-                 }*/
-
-                /*this.checkboxGroup1 = undefined;
-                this.checkboxGroup1= new Array();
-                this.checkboxGroup2 = undefined;
-                this.checkboxGroup2= new Array();
-                this.checkboxGroup3 = undefined;
-                this.checkboxGroup3= new Array();*/
-
-
-            },
-
-            intersectionBook(items){
-                if(this.checkboxGroup1.length !==0){
-                    console.log("这是在请求后台")
-                    this.request.post("/bookinfor/intersectionBook/" + items + '/' +this.checkboxGroup1).then(re=>{
-                        // this.licontainer = undefined
-                        // this.licontainer = new Array
-                        this.licontainer = re ;
-                        console.log("这是在后台筛选后的li数据")
-                        console.log(this.licontainer)
-
-                    })
-                }
-
-            },
-
             likeSearchActivities(){
                 this.activityContainer = undefined;
                 this.activityContainer = new Array();
@@ -360,80 +189,18 @@
                     console.log("这里模糊查询的accontainer")
                 })
             },
-            getLightNovel(){
-                console.log(this. checkboxGroup1)
-
-            },
-
-            downloadEbook(item){
+            downloadVideo(item){
                 console.log(item.enable)
                 if(item.enable){
-                    this.request.get("/file/judgeDownloadAuthority/"+item.bookid).then(res =>{
-                        if(res){
-                            window.open(item.bookUrl)
-                        }
-                        else{
-                            this.$message.error("亲，您的下载权限不够，会员升级可以获得更多权限哦！")
-                        }
-                    })
+                            window.open(item.videoFile)
                 }
                 else {
-                    this.$message.error("亲，非常抱歉，该书籍目前在维修中无法下载或观看")
+                    this.$message.error("亲，非常抱歉，该文件目前在维修中无法下载或观看")
                 }
 
 
             },
-            read(item){
-
-                console.log("这里是阅读界面的url")
-                console.log(item.bookUrl)
-                console.log(item.bookid)
-
-                if(item.enable){
-                    this.request.get("/file/judgeAuthority/"+item.bookid).then(res =>{
-                        if(res){
-                            this.$router.push({
-                                path:'/readingByPdf',
-                                query: {src: item.bookUrl},
-                            })
-                            item.clickNum++;
-
-                            this.request.post("/bookinfor/update" , item).then(re =>{
-                                if(re){
-                                    console.log("点击量更新成功啦")
-                                }
-
-                            })
-
-
-                        }
-                        else{
-                            this.$message.error("亲，您的阅读权限不够，会员升级可以获得更多权限哦！")
-                        }
-                    })
-                }else {
-                    this.$message.error("亲，非常抱歉，该书籍目前在维修中无法下载或观看")
-                }
-
-
-            },
-
-
             initData(){
-                this.request.get("/bookinfor").then(res =>{
-                    // console.log(res)
-                    this.licontainer = undefined;
-                    this.licontainer = new Array();
-                    this.bookInfor = res
-                    console.log("这里是bookInfor")
-                    console.log(this.bookInfor)
-                    for(var i = 0 ; i < this.bookInfor.length ; i++){
-                        let tmp = this.bookInfor[i];
-                        tmp.class ="box_ul_li";
-                        this.licontainer.push(tmp);
-                    }
-                })
-
                 this.request.get("/ruralrecreation/detail").then(res=>{
                     this.activityContainer = undefined;
                     this.activityContainer = new Array() ;
@@ -447,6 +214,17 @@
                 })
 
             },
+
+            initImages(){
+                this.request.get("/activityphotoes/random").then(res=>{
+                    this.imgs = [];
+                    let tmp = res;
+                    for(let r of res)
+                        this.imgs .push(r.url)
+                    console.log("这里是照片",this.imgs);
+                })
+            },
+
             collectEbook(item){
                 this.user  = localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")) : {}
                 console.log(this.user.userid + item.bookid)
@@ -462,11 +240,15 @@
                 })
 
             },
+
             changeActive($event) {
                 $event.currentTarget.className = 'box_ul_li on';
             },
             removeActive($event) {
                 $event.currentTarget.className = 'box_ul_li';
+            },
+            preview(url) {
+                window.open('https://file.keking.cn/onlinePreview?url=' + encodeURIComponent(window.btoa((url))))
             },
 
         }
@@ -522,8 +304,8 @@
         transition: all .6s ease-out;
         margin-left: 15px;
         margin-top: 20px;
-        background: url("http://localhost:9099/file/eee79481325c4f798b202595d529c72f.jpg");
-        /*background-size: cover;*/
+        background: url("http://localhost:9099/file/fe9026ce6217435ab6cc47d367dbec20.jpg");
+        background-size: cover;
     }
     .box ul li h3{
         padding-top: 2px;
