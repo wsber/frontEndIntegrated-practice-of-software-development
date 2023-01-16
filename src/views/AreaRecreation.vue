@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div>
       <div style="padding: 10px 0">
         <el-input style="width: 200px;margin-right: 10px" suffix-icon="el-icon-search" placeholder="请输入活动名称" v-model="activityName"></el-input>
@@ -133,7 +134,6 @@
         </div>
       </el-dialog>
     </div>
-
   </div>
 </template>
 
@@ -350,6 +350,7 @@
           this.load()
         },
       }
+
     }
 </script>
 

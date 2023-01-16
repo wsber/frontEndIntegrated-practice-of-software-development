@@ -376,8 +376,9 @@
                     }
                 })
             },
-            handleAvatarSuccess(res, file) {
-                this.cover = URL.createObjectURL(file.raw);
+            handleAvatarSuccess(res) {
+                this.cover = res;
+
                 this.$message.success("导入成功")
             },
             beforeAvatarUpload(file) {

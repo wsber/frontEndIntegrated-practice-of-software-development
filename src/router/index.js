@@ -19,10 +19,15 @@ const routes = [
 
       },
       {
-
         path: 'RuralCulturalActivitiesExhibitionRoom',
         name: 'RuralCulturalActivitiesExhibitionRoom',
         component:() => import("../views/front/RuralCulturalActivitiesExhibitionRoom.vue")
+
+      },
+      {
+        path: 'villageStudy',
+        name: 'VillageStudy',
+        component:() => import("../views/front/VillageStudy.vue")
 
       },
       {

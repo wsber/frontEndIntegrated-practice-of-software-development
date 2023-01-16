@@ -23,13 +23,17 @@
                         <i class="el-icon-cloudy    "></i>
                         <span slot="title">乡村文化活动展览室</span>
                     </el-menu-item>
-                    <el-menu-item index="PersonalReadingHouse">
-                        <i class="el-icon-s-home    "></i>
-                        <span slot="title">个人收藏室</span>
+                    <el-menu-item index="villageStudy" >
+                        <i class="el-icon-notebook-2"></i>
+                        <span slot="title">乡村书房</span>
                     </el-menu-item>
                     <el-menu-item index="home" >
                         <i class="el-icon-platform-eleme"></i>
-                        <span slot="title">电子阅览室</span>
+                        <span slot="title">青春娱乐阅览室</span>
+                    </el-menu-item>
+                    <el-menu-item index="remarks">
+                        <i class="el-icon-chat-dot-round"></i>
+                        <span slot="title">文化交流广场</span>
                     </el-menu-item>
                     <el-menu-item index="bookSale" >
                         <i class="el-icon-coin"></i>
@@ -39,10 +43,14 @@
                         <i class="el-icon-trophy-1"></i>
                         <span slot="title">会员书架</span>
                     </el-menu-item>
-                    <el-menu-item index="remarks">
-                        <i class="el-icon-chat-dot-round"></i>
-                        <span slot="title">文化交流广场</span>
+                    <el-menu-item index="PersonalReadingHouse">
+                        <i class="el-icon-s-home    "></i>
+                        <span slot="title">个人收藏室</span>
                     </el-menu-item>
+
+
+
+
                 </el-menu>
             </div>
             <div >
