@@ -157,6 +157,7 @@
           headerBg: 'headerBg',
           editdialogFormVisible: false,
           infodialogFormVisible: false,
+          times:[],
         };
       },
       created() {
