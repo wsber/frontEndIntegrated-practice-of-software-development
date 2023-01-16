@@ -116,7 +116,7 @@
                 memberName:"",
                 checkboxGroup1:[],
                 checkboxGroup2: [],
-                areas: ['中国文学', '欧美文学', '日韩文学','拉美文学'],
+                areas: ['中国', '欧美', '日韩','拉美'],
                 lightNovels: ['小说', '文学', '艺术','娱乐时尚','旅游','地图地理'],
                 licontainer:[],
                 bookInfor:[],
@@ -158,6 +158,7 @@
                         bookname: this.bookname,
                         memberName: this.memberName,
                         authorName: this.authorName,
+                        bookType: 0
                     }
                 }).then(res=>{
                     console.log("这里返回的res")
@@ -229,7 +230,7 @@
 
             },
             initData(){
-                this.request.get("/bookinfor").then(res =>{
+                this.request.get("/bookinfor/search/village").then(res =>{
                     // console.log(res)
                     this.licontainer = undefined;
                     this.licontainer = new Array();
@@ -267,9 +268,20 @@
             },
             searchBooksWithKeys(){
               console.log('这里是地区',this.checkboxGroup1)
-              console.log('这里是书籍种类',this.checkboxGroup2)
-              this.request.get("/bookinfor/search/key?bookAreas=" + this.checkboxGroup1 +"&bookTypes=" + this.checkboxGroup2).then(res=>{
-                    console.log('这里是交集后的书',res)
+              console.log('这里是书籍主题',this.checkboxGroup2)
+              this.request.get("/bookinfor/search/village/key?bookAreas=" + this.checkboxGroup1 +"&bookTypes=" + this.checkboxGroup2).then(res=>{
+                      console.log('这里是交集后的书',res)
+                      this.licontainer = undefined;
+                      this.licontainer = new Array();
+                      this.bookInfor = res
+                      console.log("这里是bookInfor")
+                      console.log(this.bookInfor)
+                      for(var i = 0 ; i < this.bookInfor.length ; i++){
+                          let tmp = this.bookInfor[i];
+                          tmp.class ="box_ul_li";
+                          this.licontainer.push(tmp);
+                  }
+
               })
             },
 
@@ -281,77 +293,10 @@
     //     }
     // }
 
-            intersectionBook(items){
-                if(this.checkboxGroup1.length !==0){
-                    console.log("这是在请求后台")
-                    this.request.post("/bookinfor/intersectionBook/" + items + '/' +this.checkboxGroup1).then(re=>{
-                        // this.licontainer = undefined
-                        // this.licontainer = new Array
-                        this.licontainer = re ;
-                        console.log("这是在后台筛选后的li数据")
-                        console.log(this.licontainer)
-
-                    })
-                }
-
-            },
-            searchBooks(){
-                this.licontainer = undefined;
-                this.licontainer = new Array();
-                if(this.checkboxGroup2.length !== 0){
-                    this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup2).then(res=>{
-                        // console.log(res)
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        // console.log(this.bufferTheme)
-                        for(var i = 0 ; i <  this.bufferTheme.length ; i++){
-                            let tmp = this.bufferTheme[i];
-                            tmp.class ="box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-
-                if(this.checkboxGroup3.length !== 0){
-                    this.request.get("/bookinfor/searchBookTheme/" + this.checkboxGroup3).then(res=>{
-                        // console.log(res)
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        // console.log(this.bufferTheme)
-                        for(var i = 0 ; i <  this.bufferTheme.length ; i++){
-                            let tmp = this.bufferTheme[i];
-                            tmp.class ="box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-
-
-
-                if(this.checkboxGroup2.length ===0 && this.checkboxGroup3.length === 0){
-                    this.request.get("/bookinfor/searchBookArea/" +this.checkboxGroup1).then(res =>{
-                        this.bufferTheme = undefined;
-                        this.bufferTheme = new Array();
-                        this.bufferTheme = res;
-                        console.log(this.bufferTheme)
-                        for (var i = 0; i < this.bufferTheme.length; i++) {
-                            let tmp = this.bufferTheme[i];
-                            tmp.class = "box_ul_li";
-                            this.licontainer.push(tmp);
-                        }
-                    })
-                }
-
-
-
-            },
 
             getLightNovel(){
                 console.log(this. checkboxGroup1)
+                console.log(this. checkboxGroup2)
 
             },
 

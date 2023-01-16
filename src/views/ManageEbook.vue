@@ -62,8 +62,8 @@
         </el-table>
 
         <div>
-            <el-dialog title="图书信息" :visible.sync="editdialogFormVisible" width="40%">
-                <el-form label-width="80px">
+            <el-dialog style="text-align: center" title="图书信息" :visible.sync="editdialogFormVisible" width="40%">
+                <el-form label-width="100px">
                     <el-form-item label="书名" >
                         <el-input v-model="form.bookname" autocomplete="off"></el-input>
                     </el-form-item>
@@ -76,11 +76,43 @@
                     <el-form-item label="阅读权限" >
                         <el-input v-model="form.readingPrivilege" autocomplete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="主题" >
-                        <el-input v-model="form.theme" autocomplete="off"></el-input>
+                    <el-form-item label="所属类型" >
+                        <el-select v-model="form.type" placeholder="请选择"
+                                   style="width: 100% ;text-align: center"
+                                   :popper-append-to-body="false" clearable
+                        @change="typeConfirm">
+                            <el-option
+                                    v-for="item in bookTypes"
+                                    :key="item.key"
+                                    :label="item.key"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
                     </el-form-item>
-                    <el-form-item label="地区" >
-                        <el-input v-model="form.area" autocomplete="off"></el-input>
+
+                    <el-form-item label="地区&主题" >
+                        <el-select v-model="form.area" placeholder="请选择所属地区"
+                                   style="width: 250px ;text-align: center;text-align-last:center"
+                                   :popper-append-to-body="false" clearable>
+                            <el-option
+                                    v-for="item in areas"
+                                    :key="item"
+                                    :label="item"
+                                    :value="item"
+                                    >
+                            </el-option>
+                        </el-select>
+                        <el-select v-model="form.theme"
+                                   placeholder="请选择书籍主题"
+                                   style="width: 250px ;margin-left: 25px ;text-align: center;text-align-last:center "
+                                   :popper-append-to-body="false" clearable>
+                            <el-option
+                                    v-for="item in currentThemes"
+                                    :key="item"
+                                    :label="item"
+                                    :value="item">
+                            </el-option>
+                        </el-select>
                     </el-form-item>
                     <el-form-item label="添加书籍封面" >
                         <el-upload
@@ -107,9 +139,6 @@
                             <div slot="tip" class="el-upload__tip">只能上传pdf文件，且只能上传一个</div>
                         </el-upload>
                     </el-form-item>
-<!--                    <el-form-item label="总价" >-->
-<!--                        <el-input v-model="form.totalprice" autocomplete="off"></el-input>-->
-<!--                    </el-form-item>-->
                 </el-form>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="editdialogFormVisible = false">取 消</el-button>
@@ -143,10 +172,32 @@
 
         data() {
             return {
+                test:'',
                 tableData: [],
                 total: 0,
                 pageNum: 1,
                 pageSize: 10,
+                areas:['中国','日韩','欧美','拉美'],
+                bookTypes:[{
+                    lable:'乡村书房',
+                    key:'乡村书房',
+                    value:0
+                },
+                {
+                    lable:'娱乐--轻小说',
+                    key:'娱乐--轻小说',
+                    value:1
+                },
+                {
+                    lable:'娱乐--轻小说',
+                    key:'娱乐--漫画',
+                    value:2
+                },
+                ],
+                currentThemes:['请选择图书所属类型'],
+                comicsThemes:['冒险漫画', '休闲漫画', '青春漫画','异世界漫画','悬疑漫画'],
+                lightNovelThemes:['修仙轻小说', '青春轻小说','恋爱轻小说','推理轻小说','异世界轻小说'],
+                villageStudyThemes:['小说', '文学', '艺术','娱乐时尚','旅游','地图地理'],
 
 
 
@@ -163,7 +214,8 @@
 
                 bookUrl:"",
 
-                form: {},
+                form: {
+                },
                 dialogFormVisible: false,
                 editdialogFormVisible:false,
                 multipleSelection: [],
@@ -172,13 +224,20 @@
         },
 
         created() {
-
             this.load()
-
         },
 
         methods:{
 
+            typeConfirm(){
+                if(this.form.type === 0){
+                    this.currentThemes = this.villageStudyThemes;
+                }else if(this.form.type === 1){
+                    this.currentThemes = this.lightNovelThemes;
+                }else {
+                    this.currentThemes =this.comicsThemes;
+                }
+            },
             changeEnable(row) {
                 console.log(row)
                 console.log("这里是该图书的信息")
@@ -233,6 +292,7 @@
                     }
 
                 })
+                console.log('这里是表单',this.from)
 
             },
             delBatch(){
@@ -334,4 +394,7 @@
         height: 178px;
         display: block;
     }
+
+
+
 </style>
