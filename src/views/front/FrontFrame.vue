@@ -1,6 +1,7 @@
 
 <template>
-    <div :style="bgImg">
+<!--    <div :style="bgImg">-->
+    <div>
         <!-- 头部-->
         <div style="display:flex; height:60px; background-color: #fff; line-height: 60px; border-bottom: 1px solid #ccc">
             <div style="width: 300px; display:flex; padding-left: 30px">

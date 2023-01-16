@@ -1,7 +1,8 @@
 
 <template>
-    <div class = "sale-background" >
-        <div style="display: flex; margin-left: 310px; margin-top: 10px">
+    <div :style="bgImg" >
+        <br>
+        <div style="display: flex; margin-left: 310px">
             <el-tag type="success" style="height: 35px; width:110px; font-size:20px; margin-right: 30px; margin-bottom: 5px">地区:</el-tag>
             <el-checkbox-group  v-model="checkboxGroup1">
                 <el-checkbox-button  v-for=" area in areas" :label="area" >{{area}}</el-checkbox-button>
@@ -103,9 +104,12 @@
         data(){
             return {
                 bgImg: {
-                    backgroundImage: "url('http://localhost:9099/file/fc2454d9adbd4e158d79f03b62de2762.jpg')",
+                    // backgroundImage: "url('http://localhost:9099/file/6ec29d00ba2142c6a54191c6783176eb.jfif')",
+                    backgroundImage: "url('http://localhost:9099/file/2f7294f8f4b744d1a6e8774ad1b1fdaf.jpg')",
+                    // backgroundImage: "url('http://localhost:9099/file/58303b74d81c4073adac49589836bc9c.jpg')",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% auto'
+                    backgroundSize: '100% auto',
+                    backgroundPosition: 'center top',
                 },
                 //抽屉特效
                 drawer: false,

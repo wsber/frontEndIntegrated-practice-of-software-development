@@ -1,11 +1,10 @@
 
 <template>
-    <div class = "sale-background" >
-
-
-        <el-carousel :interval="2000" type="card" height="450px" style="background-size: cover">
+    <div :style="bgImg"  >
+        <br>
+        <el-carousel :interval="3000" type="card" height="400px" style="background-size: cover ;width: 1500px" >
             <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
-                <img :src="item1" alt="img" style="width: 100%">
+                <img :src="item1" alt="img" style="width: 100% ; height: inherit">
             </el-carousel-item>
         </el-carousel>
 
@@ -99,9 +98,11 @@
                     ' http://localhost:9099/file/e0ce5087dd15448ea5621c9c4d36be96.jpg',
                 ],
                 bgImg: {
-                    backgroundImage: "url('http://localhost:9099/file/fc2454d9adbd4e158d79f03b62de2762.jpg')",
+                    // backgroundImage: "url('http://localhost:9099/file/79052a7b636b419b82a7a7284c55d2cd.jpg')",
+                    backgroundImage: "url('http://localhost:9099/file/68838636be5a43d4aa819ad9ee7277d1.jpg')",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% auto'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center top',
                 },
                 //抽屉特效
                 drawer: false,
@@ -122,11 +123,7 @@
                 areas: ['华夏', '欧美', '日韩'],
                 lightNovels:['奇幻', '青春','恋爱','推理'],
                 comics: ['冒险漫画', '休闲漫画', '青春漫画','异世界漫画','悬疑漫画'],
-                /* imgs:[
-                     'http://localhost:9099/file/73e921b2a67849c8ab712978e28ec7bd.png',
-                     'http://localhost:9099/file/30218b32cb5140dfaa3b89fa21badb05.png',
-                     'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
-                 ],*/
+
                 licontainer:[],
                 activityContainer:[],
                 activityInfor:[],
