@@ -25,7 +25,7 @@
                     </el-menu-item>
                     <el-menu-item index="PersonalReadingHouse">
                         <i class="el-icon-s-home    "></i>
-                        <span slot="title">个人阅览室</span>
+                        <span slot="title">个人收藏室</span>
                     </el-menu-item>
                     <el-menu-item index="home" >
                         <i class="el-icon-platform-eleme"></i>
@@ -41,7 +41,7 @@
                     </el-menu-item>
                     <el-menu-item index="remarks">
                         <i class="el-icon-chat-dot-round"></i>
-                        <span slot="title">阅读广场</span>
+                        <span slot="title">文化交流广场</span>
                     </el-menu-item>
                 </el-menu>
             </div>

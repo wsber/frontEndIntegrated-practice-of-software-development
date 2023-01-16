@@ -80,7 +80,7 @@
                                 console.log(res.data.role)
                                 // this.$router.push("/front/home")
                                 if(res.data.role ==="USER"){
-                                    this.$router.push("/front/bookSale")
+                                    this.$router.push("/front/RuralCulturalActivitiesExhibitionRoom")
                                 }
                                 else {
                                     this.$router.push("/home")
