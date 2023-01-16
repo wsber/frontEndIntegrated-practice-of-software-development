@@ -117,7 +117,7 @@
                   <el-select v-model="form.type" placeholder="请选择">
                      <el-option value="送戏下乡">送戏下乡</el-option>
                      <el-option value="文化演出">文化演出</el-option>
-                     <el-option value="公益表演">公益表演</el-option>
+                     <el-option value="公益电影放映">公益电影放映</el-option>
                   </el-select>
                </el-form-item>
                <el-form-item label="起止时间" >
@@ -178,7 +178,7 @@
                   <el-select v-model="form.type" placeholder="请选择">
                      <el-option value="送戏下乡">送戏下乡</el-option>
                      <el-option value="文化演出">文化演出</el-option>
-                     <el-option value="公益表演">公益表演</el-option>
+                     <el-option value="公益电影放映">公益电影放映</el-option>
                   </el-select>
                </el-form-item>
                <el-form-item label="起止时间" >
