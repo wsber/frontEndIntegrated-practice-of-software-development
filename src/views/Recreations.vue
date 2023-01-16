@@ -378,6 +378,7 @@
             },
             handleAvatarSuccess(res) {
                 this.cover = res;
+
                 this.$message.success("导入成功")
             },
             beforeAvatarUpload(file) {
