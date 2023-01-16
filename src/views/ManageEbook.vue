@@ -26,6 +26,7 @@
             </el-upload>
         </div>
 
+        <div></div>
 
         <el-table :data="tableData" border stripe header-cell-class-name="headerBg">
             <el-table-column type="selection" align="center" width="40"></el-table-column>
