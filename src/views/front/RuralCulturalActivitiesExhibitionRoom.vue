@@ -2,7 +2,7 @@
 <template>
     <div :style="bgImg"  >
         <br>
-        <el-carousel :interval="3000" type="card" height="450px" style="background-size: cover " >
+        <el-carousel :interval="3000" type="card" height="450px" style="background-size: cover ;width: 1700px" >
             <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
                 <img :src="item1" alt="img" style="width: 100% ; height: inherit">
             </el-carousel-item>
@@ -293,8 +293,8 @@
         margin-left: 280px;
     }
     .box_ul_li{
-        width: 350px;
-        height: 280px;
+        width: 380px;
+        height: 300px;
         box-shadow: 3px 2px 30px rgba(0,0,0,.1);
         float: left;
         text-align: center;
@@ -316,14 +316,15 @@
         font-size: 14px;
     }
     .box ul li img{
-        width: 160px;
+        width: 330px;
+        height: 210px;
         position: absolute;
         right: 26px;
         bottom: 10px;
         transition: all .6s ease-out;
     }
     .box ul .on{
-        width: 220px;
+        width: 400px;
         height: 320px;
         background-color: #6ab0e8;
         text-align: left;
@@ -337,7 +338,8 @@
         color: #FFF;
     }
     .box ul .on img{
-        width: 200px;
+        width: 380px;
+        height: 280px;
         position: absolute;
         right: 8px;
         bottom: 10px;
