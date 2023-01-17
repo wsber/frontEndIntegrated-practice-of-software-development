@@ -6,9 +6,9 @@
         <div style="display:flex; height:60px; background-color: #fff; line-height: 60px; border-bottom: 1px solid #ccc">
             <div style="width: 300px; display:flex; padding-left: 30px">
                 <div style="width: 60px">
-                    <img src="../../assets/logo2.png" alt="" style=" width: 70px; position: relative; top: 5px; right: 0">
+                    <img src="http://localhost:9099/file/f821245678ee4b78a8aedd3e0edccbaa.jpg" alt="" style=" width: 60px; position: relative; top: 0px; right: 0px ;margin-bottom: 15px">
                 </div>
-                <div style="flex: 1; margin-left: 20px ; "> 欢迎来到文化振兴平台</div>
+                <div style="flex: 1; margin-left: 10px ; "> 欢迎来到乡村文化振兴平台</div>
             </div>
             <div style="flex: 1">
                 <el-menu
