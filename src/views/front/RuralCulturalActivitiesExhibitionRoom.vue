@@ -1,18 +1,16 @@
 
 <template>
-    <div class = "sale-background" >
-
-
-        <el-carousel :interval="2000" type="card" height="450px" style="background-size: cover">
+    <div :style="bgImg"  >
+        <br>
+        <el-carousel :interval="3000" type="card" height="450px" style="background-size: cover ;width: 1700px" >
             <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
-                <img :src="item1" alt="img" style="width: 100%">
+                <img :src="item1" alt="img" style="width: 100% ; height: inherit">
             </el-carousel-item>
         </el-carousel>
 
 
         <div style="margin-top: 20px; margin-left: 310px; padding:  10px 0">
             <el-input style=" width:200px" placeholder="请输入活动名称" suffix-icon="el-icon-reading" v-model = "activityName"></el-input>
-            <!--            <el-input style=" width:200px" placeholder="请输入会员名称" suffix-icon="el-icon-loading" class = "ml-5" v-model = "memberName"></el-input>-->
             <el-select v-model="activityType" placeholder="请选择活动类型" style="margin-left: 5px">
                 <el-option label="文化演出活动" value="文化演出活动" ></el-option>
                 <el-option label="公益电影放映" value="公益电影放映" ></el-option>
@@ -22,6 +20,8 @@
             <el-button class="ml-5" type="primary" @click="likeSearchActivities">搜索</el-button>
             <el-button class="ml-5" type="warning" @click="reset">重置</el-button>
         </div>
+
+
 
         <div style="margin-top: 10px">
             <el-drawer
@@ -64,7 +64,7 @@
             <ul>
                 <li :class="item.class"  v-for="item in activityContainer" @mouseover="changeActive($event)" @mouseleave="removeActive($event)">
                     <el-button type="text" @click="lookUpDetailedInformation(item)" style="font-size: 15px; color: #ef2d84">查看详细信息</el-button>
-                    <img :src="item.cover" alt="img" style="width: 170px; height: 202px;margin-top: 5px">
+                    <img :src="item.cover" alt="img" style="margin-top: 5px">
                     <h3>{{item.activityName}}</h3>
                 </li>
                 <div style="clear: both"></div>
@@ -99,9 +99,11 @@
                     ' http://localhost:9099/file/e0ce5087dd15448ea5621c9c4d36be96.jpg',
                 ],
                 bgImg: {
-                    backgroundImage: "url('http://localhost:9099/file/fc2454d9adbd4e158d79f03b62de2762.jpg')",
+                    // backgroundImage: "url('http://localhost:9099/file/79052a7b636b419b82a7a7284c55d2cd.jpg')",
+                    backgroundImage: "url('http://localhost:9099/file/68838636be5a43d4aa819ad9ee7277d1.jpg')",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% auto'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center top',
                 },
                 //抽屉特效
                 drawer: false,
@@ -122,11 +124,7 @@
                 areas: ['华夏', '欧美', '日韩'],
                 lightNovels:['奇幻', '青春','恋爱','推理'],
                 comics: ['冒险漫画', '休闲漫画', '青春漫画','异世界漫画','悬疑漫画'],
-                /* imgs:[
-                     'http://localhost:9099/file/73e921b2a67849c8ab712978e28ec7bd.png',
-                     'http://localhost:9099/file/30218b32cb5140dfaa3b89fa21badb05.png',
-                     'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
-                 ],*/
+
                 licontainer:[],
                 activityContainer:[],
                 activityInfor:[],
@@ -295,7 +293,7 @@
         margin-left: 280px;
     }
     .box_ul_li{
-        width: 200px;
+        width: 380px;
         height: 300px;
         box-shadow: 3px 2px 30px rgba(0,0,0,.1);
         float: left;
@@ -318,14 +316,15 @@
         font-size: 14px;
     }
     .box ul li img{
-        width: 160px;
+        width: 330px;
+        height: 210px;
         position: absolute;
         right: 26px;
         bottom: 10px;
         transition: all .6s ease-out;
     }
     .box ul .on{
-        width: 220px;
+        width: 400px;
         height: 320px;
         background-color: #6ab0e8;
         text-align: left;
@@ -339,7 +338,8 @@
         color: #FFF;
     }
     .box ul .on img{
-        width: 200px;
+        width: 380px;
+        height: 280px;
         position: absolute;
         right: 8px;
         bottom: 10px;

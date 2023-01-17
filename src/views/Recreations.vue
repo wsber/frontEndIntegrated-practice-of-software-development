@@ -53,7 +53,7 @@
             <el-table-column prop="transStartTime" align="center" label="开始时间" width="140"></el-table-column>
             <el-table-column prop="transEndTime" align="center" label="结束时间" width="140"></el-table-column>
             <el-table-column prop="type" align="center" label="活动类型" width="100"></el-table-column>
-            <el-table-column prop="mydesc" align="center" label="活动描述" width="200"></el-table-column>
+
             <el-table-column align="center" label="操作" width="160">
                <template slot-scope="scope">
                   <el-button size="mini" type="primary" @click="handleEdit(scope.row)">编辑</el-button>
@@ -117,7 +117,7 @@
                   <el-select v-model="form.type" placeholder="请选择">
                      <el-option value="送戏下乡">送戏下乡</el-option>
                      <el-option value="文化演出">文化演出</el-option>
-                     <el-option value="公益表演">公益表演</el-option>
+                     <el-option value="公益电影放映">公益电影放映</el-option>
                   </el-select>
                </el-form-item>
                <el-form-item label="起止时间" >
@@ -178,7 +178,7 @@
                   <el-select v-model="form.type" placeholder="请选择">
                      <el-option value="送戏下乡">送戏下乡</el-option>
                      <el-option value="文化演出">文化演出</el-option>
-                     <el-option value="公益表演">公益表演</el-option>
+                     <el-option value="公益电影放映">公益电影放映</el-option>
                   </el-select>
                </el-form-item>
                <el-form-item label="起止时间" >

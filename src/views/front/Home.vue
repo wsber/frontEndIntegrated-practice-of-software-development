@@ -1,7 +1,8 @@
 
 <template>
-    <div class = "sale-background" >
-        <div style="display: flex; margin-left: 310px; margin-top: 10px">
+    <div :style="bgImg" >
+        <br>
+        <div style="display: flex; margin-left: 310px">
             <el-tag type="success" style="height: 35px; width:110px; font-size:20px; margin-right: 30px; margin-bottom: 5px">地区:</el-tag>
             <el-checkbox-group  v-model="checkboxGroup1">
                 <el-checkbox-button  v-for=" area in areas" :label="area" >{{area}}</el-checkbox-button>
@@ -108,7 +109,7 @@
         data(){
             return {
                 bgImg: {
-                    backgroundImage: "url('http://localhost:9099/file/fc2454d9adbd4e158d79f03b62de2762.jpg')",
+                    backgroundImage: "url('http://localhost:9099/file/b1e15b91a1c9423f8ea42264cf61700d.jpg')",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: '100% auto'
                 },

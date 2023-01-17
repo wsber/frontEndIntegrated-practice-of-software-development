@@ -1,5 +1,5 @@
 <template>
-    <div class = "sale-background">
+    <div >
        <!-- <div style = "width:100%;height:50px;border-bottom:2px solid #55cae5">
             <div>
                 <h1 style = "text-align: center; font-family: 'Times New Roman','华光楷体_CNKI';color: firebrick ">快来看看Sirius书吧的精品图书！</h1>
@@ -9,7 +9,7 @@
 
         <el-carousel :interval="2500" type="card" height="450px" style="background-size: cover">
             <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
-                <img :src="item1" alt="img" style="width: 100%">
+                <img :src="item1" alt="img" style="width: 100% ;height: inherit">
             </el-carousel-item>
         </el-carousel>
 
