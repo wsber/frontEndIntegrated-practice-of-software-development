@@ -359,7 +359,7 @@
         margin-left: 15px;
         margin-top: 20px;
         background: url("http://localhost:9099/file/eee79481325c4f798b202595d529c72f.jpg");
-        /*background-size: cover;*/
+        background-size: cover;
     }
     .box ul li h3{
         padding-top: 2px;
@@ -372,7 +372,8 @@
         font-size: 14px;
     }
     .box ul li img{
-        width: 160px;
+        width: 150px;
+        height: 220px;
         position: absolute;
         right: 26px;
         bottom: 10px;
@@ -394,6 +395,7 @@
     }
     .box ul .on img{
         width: 200px;
+        height: 280px;
         position: absolute;
         right: 8px;
         bottom: 10px;
