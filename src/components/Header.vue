@@ -15,7 +15,7 @@
             <el-dropdown style="width: 150px; cursor: pointer; text-align: right">
                 <div style="display: inline-block">
                     <img :src="this.form.avatarurl" alt="   "
-                         style="width: 50px; border-radius: 70%; position: relative; top: 10px; right: 5px">
+                         style="width: 50px;height: 50px; border-radius: 100%; position: relative; top: 5px; right: 5px ;margin-bottom: 5px">
                     <span>{{ user.username }}</span><i class="el-icon-arrow-down" style="margin-left: 5px"></i>
                 </div>
                 <el-dropdown-menu slot="dropdown" style="width: 100px; text-align: center">
