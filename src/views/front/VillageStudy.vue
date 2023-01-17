@@ -154,7 +154,6 @@
                     this.initData()
             },
             likeSearchBooks(){
-
                 this.licontainer = undefined;
                 this.licontainer = new Array();
                 this.request.get("/bookinfor/likeSearchBooks" , {

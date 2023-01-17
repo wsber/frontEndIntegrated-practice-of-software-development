@@ -53,7 +53,7 @@
             <el-table-column prop="transStartTime" align="center" label="开始时间" width="140"></el-table-column>
             <el-table-column prop="transEndTime" align="center" label="结束时间" width="140"></el-table-column>
             <el-table-column prop="type" align="center" label="活动类型" width="100"></el-table-column>
-            <el-table-column prop="mydesc" align="center" label="活动描述" width="200"></el-table-column>
+
             <el-table-column align="center" label="操作" width="160">
                <template slot-scope="scope">
                   <el-button size="mini" type="primary" @click="handleEdit(scope.row)">编辑</el-button>
