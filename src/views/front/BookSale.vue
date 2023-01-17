@@ -1,11 +1,5 @@
 <template>
     <div >
-       <!-- <div style = "width:100%;height:50px;border-bottom:2px solid #55cae5">
-            <div>
-                <h1 style = "text-align: center; font-family: 'Times New Roman','华光楷体_CNKI';color: firebrick ">快来看看Sirius书吧的精品图书！</h1>
-            </div>
-        </div>-->
-
 
         <el-carousel :interval="2500" type="card" height="450px" style="background-size: cover">
             <el-carousel-item v-for="item1 in this.imgs"  :key="item1">
@@ -487,6 +481,7 @@
     }
     .box ul li img{
         width: 160px;
+        height: 220px;
         position: absolute;
         right: 26px;
         bottom: 10px;
@@ -507,7 +502,8 @@
         color: #FFF;
     }
     .box ul .on img{
-        width: 200px;
+        width: 230px;
+        height: 300px;
         position: absolute;
         right: 8px;
         bottom: 10px;

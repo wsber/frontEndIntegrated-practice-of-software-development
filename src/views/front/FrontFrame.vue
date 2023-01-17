@@ -40,10 +40,10 @@
                         <i class="el-icon-coin"></i>
                         <span slot="title">图书购买</span>
                     </el-menu-item>
-                    <el-menu-item index="memberBookcase">
-                        <i class="el-icon-trophy-1"></i>
-                        <span slot="title">会员书架</span>
-                    </el-menu-item>
+<!--                    <el-menu-item index="memberBookcase">-->
+<!--                        <i class="el-icon-trophy-1"></i>-->
+<!--                        <span slot="title">会员书架</span>-->
+<!--                    </el-menu-item>-->
                     <el-menu-item index="PersonalReadingHouse">
                         <i class="el-icon-s-home    "></i>
                         <span slot="title">个人收藏室</span>

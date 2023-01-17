@@ -41,20 +41,20 @@
       <div>
          <el-table :data="tableData" border stripe :header-cell-class-name="headerBg" @selection-change="handleSelectionChange">>
             <el-table-column type="selection" align="center" width="40"></el-table-column>
-            <el-table-column prop="cover" align="center" label="活动照片" width="100">
+            <el-table-column prop="cover" align="center" label="活动照片" width="200px">
                <template #default="scope">
-                  <img :src="scope.row.cover" style="width: 70px; height: 100px">
+                  <img :src="scope.row.cover" style="width: 150px; height: 100px">
                </template>
             </el-table-column>
             <el-table-column prop="activityName" align="center" label="活动名称" width="150"></el-table-column>
             <el-table-column prop="id" align="center" label="活动ID" width="100"></el-table-column>
             <el-table-column prop="audienceNumber" align="center" label="观众人数" width="100"></el-table-column>
-            <el-table-column prop="performanceTeam" align="center" label="表演团队" width="150"></el-table-column>
+            <el-table-column prop="performanceTeam" align="center" label="表演团队" width="200"></el-table-column>
             <el-table-column prop="transStartTime" align="center" label="开始时间" width="140"></el-table-column>
             <el-table-column prop="transEndTime" align="center" label="结束时间" width="140"></el-table-column>
-            <el-table-column prop="type" align="center" label="活动类型" width="100"></el-table-column>
+            <el-table-column prop="type" align="center" label="活动类型" width="150"></el-table-column>
 
-            <el-table-column align="center" label="操作" width="160">
+            <el-table-column align="center" label="操作">
                <template slot-scope="scope">
                   <el-button size="mini" type="primary" @click="handleEdit(scope.row)">编辑</el-button>
                   <el-popconfirm
