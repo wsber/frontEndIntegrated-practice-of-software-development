@@ -60,15 +60,17 @@
                         />
                         <div style="margin-left: 20px;">
                             <span style="font-weight: bold;font-size:x-large">{{detailBookInformation.bookname}}</span>
-                            <br/>
-                            <div style="margin-top: 80px;font-weight: lighter">作者：{{detailBookInformation.authorName}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">作者：{{detailBookInformation.authorName}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">书籍种类：{{detailBookInformation.theme}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">地区：{{detailBookInformation.area}}</div>
+                            <div style="margin-top: 20px;font-weight: lighter">点击量：{{detailBookInformation.clickNum}}</div>
                         </div>
                     </div>
                 </div>
                 <div style="margin-left: 130px; margin-top: 50px;">
                     <el-button type = "success" class="ml-5" @click="read(detailBookInformation)">阅读</el-button>
                     <el-button type = "primary" @click="downloadEbook(detailBookInformation)">下载</el-button>
-                    <el-button type = "primary"@click="collectEbook(detailBookInformation)">收藏</el-button>
+                    <el-button type = "primary" @click="collectEbook(detailBookInformation)">收藏</el-button>
                 </div>
                 <div style="margin-left: 230px; margin-top: 50px;font-weight: bold;font-size: large">简介</div>
                 <div style="margin-top: 10px;font-weight: lighter">{{detailBookInformation.synopsis}}</div>
@@ -89,13 +91,13 @@
         </div>
 
 
-        <div class="box-card" style="width: 100%;height: 150px;margin-top: 50px;background-color: #3c3f41">
+        <div class="box-card" style="width: 100%;height: 150px;background-color: #3c3f41">
             <div style="margin-left: 150px;padding-top: 50px;display: flex">
                 <div style=" flex: 6;display: flex">
                     <h1 style="color: #d3dce6;margin-left: 30px;padding-top: 8px">乡村文化振兴</h1>
                 </div>
                 <div style="margin-left: 100px;padding-top: 50px;flex: 2">
-                    <h3 style="color: #d3dce6;margin-left: 15px">团队：三人帮</h3>
+                    <h3 style="color: #d3dce6; ;margin-right: 250px">团队：三人帮</h3>
                 </div>
             </div>
         </div>

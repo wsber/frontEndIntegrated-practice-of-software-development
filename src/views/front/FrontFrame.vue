@@ -44,10 +44,10 @@
 <!--                        <i class="el-icon-trophy-1"></i>-->
 <!--                        <span slot="title">会员书架</span>-->
 <!--                    </el-menu-item>-->
-                    <el-menu-item index="PersonalReadingHouse">
-                        <i class="el-icon-s-home    "></i>
-                        <span slot="title">个人收藏室</span>
-                    </el-menu-item>
+<!--                    <el-menu-item index="PersonalReadingHouse">-->
+<!--                        <i class="el-icon-s-home    "></i>-->
+<!--                        <span slot="title">个人收藏室</span>-->
+<!--                    </el-menu-item>-->
 
 
 
@@ -55,13 +55,13 @@
                 </el-menu>
             </div>
             <div >
-                <el-dropdown style="width: 100px; cursor: pointer">
+                <el-dropdown style="width: 100px; cursor: pointer ;margin-right: 20px">
                     <div style="display: inline-block">
                         <img :src="this.form.avatarurl" alt=""
-                             style="width: 25px; border-radius: 50%; position: relative; top: 10px; right: 5px">
+                             style="width: 32px;height: 32px; border-radius: 100%; position: relative;  right: 5px; margin-top: 20px">
                         <span>{{ user.username }}</span><i class="el-icon-arrow-down" style="margin-left: 5px"></i>
                     </div>
-                    <el-dropdown-menu slot="dropdown" style="width: 100px; text-align: center" router>
+                    <el-dropdown-menu slot="dropdown" style="width: 100px; text-align: center;margin-right: 20px" router>
                         <el-dropdown-item>
 <!--                            <router-link to="person">个人信息</router-link>-->
                             <span  style="text-decoration: none" @click="$router.push('/person')">个人信息</span>

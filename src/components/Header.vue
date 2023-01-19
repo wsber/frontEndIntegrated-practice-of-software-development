@@ -97,10 +97,8 @@
 
                 //重置路由
                 resetRouter()
-
             }
         }
-
     }
 </script>
 

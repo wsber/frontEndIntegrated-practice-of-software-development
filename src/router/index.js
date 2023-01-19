@@ -151,15 +151,9 @@ export const setRoutes =()=>{
   if(storemenus){
     //拼装动态路由
     const manageRoute ={path: '/', name: 'bookBar', component: () =>import('../views/bookBar'), redirect:"/login",children:[
-        // {
-        //   path: 'person',
-        //   name: 'Person',
-        //   component:() => import("../views/front/Person.vue")
-        // },
       ]}
 
     const  menus = JSON.parse(storemenus)
-
     menus.forEach(item =>{
       if(item.path){
         let itemMenu = {path: item.path.replace("/",""), name: item.name, component: () =>import('../views/'+item.pagePath + '.vue')}
@@ -189,8 +183,6 @@ export const setRoutes =()=>{
 router.beforeEach((to,from,next)=>{
 
   localStorage.setItem("currentPathName",to.name)  //设置当前路由的名称
-
-
 
   if(!to.matched.length)
   {

@@ -249,10 +249,10 @@
                 }).then(res => {console.log(res)
                     this.tableData=res.records
                     this.total=res.total
-                    console.log(this.tableData)
-                    for(var i = 0 ;i <this.tableData.length ; i++){
+                    console.log('这里是tabledata',this.tableData)
+                    for(let i = 0 ;i <this.tableData.length ; i++){
                         this.tableData[i].transStartTime = this.tableData[i].activityStarttime[0] + "-" +this.tableData[i].activityStarttime[1]+ "-" + this.tableData[i].activityStarttime[2] ;
-                        this.tableData[i].transEndTime = this.tableData[i].activityEndtime[1] + "-" +this.tableData[i].activityEndtime[1]+ "-" + this.tableData[i].activityEndtime[2] ;
+                        this.tableData[i].transEndTime = this.tableData[i].activityEndtime[0] + "-" +this.tableData[i].activityEndtime[1]+ "-" + this.tableData[i].activityEndtime[2] ;
                     }
                 })
             },

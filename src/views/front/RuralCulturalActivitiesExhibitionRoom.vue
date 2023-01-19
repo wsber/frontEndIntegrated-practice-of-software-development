@@ -92,12 +92,7 @@
         name: "RuralCulturalActivitiesExhibitionRoom",
         data(){
             return {
-                imgs:[
-                    'http://localhost:9099/file/73e921b2a67849c8ab712978e28ec7bd.png',
-                    'http://localhost:9099/file/30218b32cb5140dfaa3b89fa21badb05.png',
-                    'http://localhost:9099/file/a9b4d3f6a27846bd99246dbdcd8c8907.png',
-                    ' http://localhost:9099/file/e0ce5087dd15448ea5621c9c4d36be96.jpg',
-                ],
+                imgs:[],
                 bgImg: {
                     // backgroundImage: "url('http://localhost:9099/file/79052a7b636b419b82a7a7284c55d2cd.jpg')",
                     backgroundImage: "url('http://localhost:9099/file/68838636be5a43d4aa819ad9ee7277d1.jpg')",
